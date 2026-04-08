@@ -18,21 +18,21 @@ class PlayerController(
     container : LinearLayout ,
     inflater: LayoutInflater ,
 ) {
-    val cardView : View = inflater.inflate(R.layout.card_design , container , false)
-    val actualCard : CardView = cardView.findViewById(R.id.card_design)
+    private val cardView : View = inflater.inflate(R.layout.card_design , container , false)
+    private val actualCard : CardView = cardView.findViewById(R.id.card_design)
 
-    val nameView : TextView = cardView.findViewById(R.id.name_view)
-    val scoreView : TextView = cardView.findViewById(R.id.score_view)
-    val plusButton : ImageButton = cardView.findViewById(R.id.plus_button)
-    val minusButton: ImageButton = cardView.findViewById(R.id.minus_button)
-    val deleteButton : ImageButton = cardView.findViewById(R.id.delete_button)
+    private val nameView : TextView = cardView.findViewById(R.id.name_view)
+    private val scoreView : TextView = cardView.findViewById(R.id.score_view)
+    private val plusButton : ImageButton = cardView.findViewById(R.id.plus_button)
+    private val minusButton: ImageButton = cardView.findViewById(R.id.minus_button)
+    private val deleteButton : ImageButton = cardView.findViewById(R.id.delete_button)
 
-    fun updateUI(player : PlayerCard){
+    private fun updateUI(player : PlayerCard){
         nameView.text = player.name
         scoreView.text = player.score.toString()
     }
 
-    fun addColor(){
+    private fun addColor(){
         // Now this will work perfectly!
         val randomColor = colorPalette.random()
         val convertedColor = randomColor.toColorInt()
@@ -40,7 +40,7 @@ class PlayerController(
         actualCard.setCardBackgroundColor(convertedColor)
     }
 
-    fun removeCard(player : PlayerCard , container: LinearLayout){
+    private fun removeCard(player : PlayerCard , container: LinearLayout){
 
         playersList.remove(player)
         container.removeView(cardView)
@@ -73,8 +73,8 @@ class PlayerController(
     }
 
     // Put constants like this in a companion object so they are only created once
-    companion object {
-        val colorPalette = listOf(
+     companion object {
+        private val colorPalette = listOf(
             "#F44336", // Red (Your Original)
             "#E91E63", // Pink
             "#9C27B0", // Purple (Your Original)
@@ -91,9 +91,10 @@ class PlayerController(
             "#FF9800", // Orange (Your Original)
             "#FF5722"  // Deep Orange
         )
-        var playersCount : Int = 0
+        private var playersCount : Int = 0
+        public var _playersCounter : Int = playersCount
 
-        val playersList = mutableListOf<PlayerCard>()
+        private val playersList = mutableListOf<PlayerCard>()
     }
 
 }
