@@ -39,7 +39,6 @@ class PlayerController(
 
         playersList.remove(player)
         container.removeView(cardView)
-        _playersCount = playersList.size
     }
     // The init block is moved to the bottom, AFTER the functions are ready
     init {
@@ -62,7 +61,6 @@ class PlayerController(
             removeCard(player , container)
         }
         playersList.add(player)
-        _playersCount = playersList.size
 
         container.addView(cardView)
     }
@@ -86,8 +84,9 @@ class PlayerController(
             "#FF9800", // Orange (Your Original)
             "#FF5722"  // Deep Orange
         )
-        private var _playersCount : Int = 0
-        var playersCounter : Int = _playersCount
+         val playersCount : Int
+            get() = playersList.size
+
 
 
         private val playersList = mutableListOf<PlayerCard>()

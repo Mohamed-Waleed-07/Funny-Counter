@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.add_button){
-                if (PlayerController.playersCounter == 5){
+                if (PlayerController.playersCount == 5){
                     Toast.makeText(this@MainActivity , "Limit is 5 players !" , Toast.LENGTH_LONG).show()
                 }
                 else{
