@@ -1,20 +1,14 @@
 package com.mohamedwaleed.dominoscore
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
     lateinit var toolbar : Toolbar
@@ -28,11 +22,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             insets
         }
-        container = findViewById<LinearLayout>(R.id.cards_container)
+        container = findViewById(R.id.cards_container)
         toolbar = findViewById(R.id.toolbar)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.add_button){
-                if (PlayerController._playersCounter == 5){
+                if (PlayerController.playersCounter == 5){
                     Toast.makeText(this@MainActivity , "Limit is 5 players !" , Toast.LENGTH_LONG).show()
                 }
                 else{

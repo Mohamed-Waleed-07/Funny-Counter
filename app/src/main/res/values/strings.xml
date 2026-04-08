@@ -4,4 +4,6 @@
     <string name="button_plus">button plus</string>
     <string name="button_minus">button minus</string>
     <string name="edit_button">edit button</string>
+    <string name="delete_button">delete_button</string>
+    <string name="textview">TextView</string>
 </resources>

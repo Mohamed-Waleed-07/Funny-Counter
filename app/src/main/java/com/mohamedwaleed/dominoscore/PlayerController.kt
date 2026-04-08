@@ -1,16 +1,11 @@
 package com.mohamedwaleed.dominoscore
 
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.graphics.component1
-import androidx.core.graphics.component2
-import androidx.core.graphics.component3
-import androidx.core.graphics.component4
 import androidx.core.graphics.toColorInt
 
 class PlayerController(
@@ -44,7 +39,7 @@ class PlayerController(
 
         playersList.remove(player)
         container.removeView(cardView)
-        playersCount = playersList.size
+        _playersCount = playersList.size
     }
     // The init block is moved to the bottom, AFTER the functions are ready
     init {
@@ -67,7 +62,7 @@ class PlayerController(
             removeCard(player , container)
         }
         playersList.add(player)
-        playersCount = playersList.size
+        _playersCount = playersList.size
 
         container.addView(cardView)
     }
@@ -91,8 +86,9 @@ class PlayerController(
             "#FF9800", // Orange (Your Original)
             "#FF5722"  // Deep Orange
         )
-        private var playersCount : Int = 0
-        public var _playersCounter : Int = playersCount
+        private var _playersCount : Int = 0
+        var playersCounter : Int = _playersCount
+
 
         private val playersList = mutableListOf<PlayerCard>()
     }

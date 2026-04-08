@@ -44,7 +44,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Mama"
                     android:textColor="#FFFFFF"
                     android:textSize="34sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +57,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@android:color/transparent"
-                    android:contentDescription="delete_button"
+                    android:contentDescription="@string/delete_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.717"
@@ -76,7 +75,7 @@
                 android:id="@+id/score_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/textview"
                 android:textColor="#FFFFFF"
                 android:textSize="48sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -89,29 +88,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/button_plus"
+                android:src="@drawable/plus_button"
                 app:layout_constraintBottom_toBottomOf="@+id/score_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/score_view"
                 app:layout_constraintTop_toTopOf="@+id/score_view"
-                android:src="@drawable/plus_button"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/button_plus"
 
-                />
+                tools:ignore="RedundantDescriptionCheck" />
 
             <ImageButton
                 android:id="@+id/minus_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/button_minus"
+                android:src="@drawable/minus_button"
                 app:layout_constraintBottom_toBottomOf="@+id/score_view"
                 app:layout_constraintEnd_toStartOf="@+id/score_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/score_view"
-                android:src="@drawable/minus_button"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/button_minus"
-                />
+                tools:ignore="RedundantDescriptionCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
