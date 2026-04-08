@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DominoScore</string>
+    <string name="add">Add</string>
+    <string name="button_plus">button plus</string>
+    <string name="button_minus">button minus</string>
+    <string name="edit_button">edit button</string>
+</resources>
