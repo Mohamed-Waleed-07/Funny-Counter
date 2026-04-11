@@ -14,6 +14,8 @@ class PlayerCardView(
 
 ) {
 
+
+
       val cardView : View = inflater.inflate(R.layout.card_design , container , false)
      private val actualCard : CardView = cardView.findViewById(R.id.card_design)
 
@@ -23,7 +25,6 @@ class PlayerCardView(
      val minusButton: ImageButton = cardView.findViewById(R.id.minus_button)
      val deleteButton : ImageButton = cardView.findViewById(R.id.delete_button)
 
-     val color : String=""
 
     private val colorPalette = listOf(
         "#F44336", // Red (Your Original)
@@ -43,11 +44,10 @@ class PlayerCardView(
         "#FF5722"  // Deep Orange
     )
 
-    fun setColor(){
+    init {
         val randomColor = colorPalette.random()
         val color = randomColor.toColorInt()
         actualCard.setCardBackgroundColor(color)
     }
-
 
 }

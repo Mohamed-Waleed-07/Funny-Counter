@@ -3,31 +3,23 @@ package com.mohamedwaleed.dominoscore
 import androidx.lifecycle.ViewModel
 
 class PlayerViewModel : ViewModel() {
-    private var _playerCounter : Int = 0
-    var playerCounter = _playerCounter
+    val playersList = mutableListOf<PlayerCardData>()
+    var playersCounter : Int =0
 
 
-    fun addCard(playerCardData: PlayerCardData , playerCardView: PlayerCardView) : PlayerCardView{
-
-        playerCardView.scoreView.text = playerCardData.score.toString()
-        playerCardView.nameView.text = playerCardData.name
-        playerCardView.setColor()
-        playerCardView.plusButton.setOnClickListener { increaseScore(playerCardData , playerCardView) }
-        playerCardView.minusButton.setOnClickListener { decreaseScore(playerCardData , playerCardView) }
-
-        playerCounter++
-        return playerCardView
+    fun addCard(){
+       playersList.add(PlayerCardData())
+       playersCounter = playersList.size
     }
-    fun increaseScore(playerCardData: PlayerCardData , playerCardView: PlayerCardView){
+    fun increaseScore(playerCardData: PlayerCardData){
         playerCardData.incScore()
-        playerCardView.scoreView.text = playerCardData.score.toString()
     }
-    fun decreaseScore(playerCardData: PlayerCardData , playerCardView: PlayerCardView){
+    fun decreaseScore(playerCardData: PlayerCardData){
         playerCardData.decScore()
-        playerCardView.scoreView.text = playerCardData.score.toString()
     }
-    fun removePlayer(){
-        playerCounter--
+    fun removePlayer(playerCardData: PlayerCardData){
+       playersList.remove(playerCardData)
+        playersCounter = playersList.size
     }
 
 }

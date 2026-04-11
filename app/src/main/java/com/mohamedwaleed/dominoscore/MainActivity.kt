@@ -24,23 +24,40 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+
         playerViewModel = ViewModelProvider(this).get(PlayerViewModel :: class.java)
         container = findViewById(R.id.cards_container)
         toolbar = findViewById(R.id.toolbar)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.add_button){
 
-                if (playerViewModel.playerCounter < 5){
+                if (playerViewModel.playersCounter < 5){
+                    playerViewModel.addCard()
 
-                    val playerView = playerViewModel.addCard(playerCardView = PlayerCardView(container , layoutInflater)
-                        , playerCardData = PlayerCardData())
+                    val playerCardData = playerViewModel.playersList.last()
 
-                    container.addView(playerView.cardView)
+                    val playerCardView = PlayerCardView(container , layoutInflater)
 
-                    playerView.deleteButton.setOnClickListener {
-                        playerViewModel.removePlayer()
-                        container.removeView(playerView.cardView)
+                    playerCardView.scoreView.text = playerCardData.score.toString()
+                    playerCardView.nameView.text = playerCardData.name
+
+                    container.addView(playerCardView.cardView)
+
+                    playerCardView.plusButton.setOnClickListener {
+                        playerViewModel.increaseScore(playerCardData)
+                        playerCardView.scoreView.text = playerCardData.score.toString()
                     }
+                    playerCardView.minusButton.setOnClickListener {
+                        playerViewModel.decreaseScore(playerCardData)
+                        playerCardView.scoreView.text = playerCardData.score.toString()
+                    }
+                    playerCardView.deleteButton.setOnClickListener {
+                        playerViewModel.removePlayer(playerCardData)
+                        container.removeView(playerCardView.cardView)
+                    }
+
                 }
                 else{
                     Toast.makeText(this , "Reached limit of 5 !" , Toast.LENGTH_SHORT).show()
@@ -49,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnMenuItemClickListener true
         }
+
     }
 }
 
