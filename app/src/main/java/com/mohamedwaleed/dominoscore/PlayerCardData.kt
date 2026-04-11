@@ -1,12 +1,10 @@
 package com.mohamedwaleed.dominoscore
 
-    class PlayerCard{
+class PlayerCardData(){
+    var score : Int = 0
+    val name : String = animalNames.random()
 
-
-      var score : Int = 0
-      var name : String =""
-
-    private companion object {
+    companion object {
 
         private val animalNames = listOf(
             "Lion",
@@ -26,18 +24,11 @@ package com.mohamedwaleed.dominoscore
             "Bear"
         )
     }
-        init {
-            name = animalNames.random()
-        }
-
-        fun increase(){
+    fun incScore(){
         score++
     }
-        fun decrease(){
+    fun decScore(){
         score--
     }
-
-
-
 
 }

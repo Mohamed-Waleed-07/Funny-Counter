@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
     lateinit var toolbar : Toolbar
     lateinit var container: LinearLayout
+    lateinit var playerViewModel : PlayerViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(SystemBarStyle.dark(1))
@@ -22,16 +24,26 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             insets
         }
+        playerViewModel = ViewModelProvider(this).get(PlayerViewModel :: class.java)
         container = findViewById(R.id.cards_container)
         toolbar = findViewById(R.id.toolbar)
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.add_button){
-                if (PlayerController.playersCount == 5){
-                    Toast.makeText(this@MainActivity , "Limit is 5 players !" , Toast.LENGTH_LONG).show()
+
+                if (playerViewModel.playerCounter < 5){
+
+                    val playerView = playerViewModel.addCard(playerCardView = PlayerCardView(container , layoutInflater)
+                        , playerCardData = PlayerCardData())
+
+                    container.addView(playerView.cardView)
+
+                    playerView.deleteButton.setOnClickListener {
+                        playerViewModel.removePlayer()
+                        container.removeView(playerView.cardView)
+                    }
                 }
                 else{
-                    val controller = PlayerController(
-                        PlayerCard(), container, layoutInflater)
+                    Toast.makeText(this , "Reached limit of 5 !" , Toast.LENGTH_SHORT).show()
                 }
 
             }
